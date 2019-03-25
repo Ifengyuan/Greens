@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://47.95.224.159/db_greens?serverTimezone=UTC
     username: root
-    password: qfjava
+    password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
 
 mybatis:
