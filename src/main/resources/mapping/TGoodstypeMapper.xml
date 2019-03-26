@@ -8,5 +8,8 @@
 		<result column="typename" property="typename" />
 		<result column="typeflag" property="typeflag" />
 	</resultMap>
+	<select id="selectAll"  resultMap="BaseResultMap">
+		select * from t_goodstype
 
+	</select>
 </mapper>

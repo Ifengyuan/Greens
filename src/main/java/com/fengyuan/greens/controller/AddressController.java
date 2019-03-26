@@ -6,6 +6,7 @@ import com.fengyuan.greens.vo.ResultVo;
 import com.fengyuan.greens.vo.VAddress;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +28,12 @@ public class AddressController {
     private AddService as;
     @ApiOperation("查看用户的地址")
     @GetMapping("selectByUid.do")
-    public List<VAddress> selectByUid(Integer uid){
+    public List<VAddress> selectByUid(@ApiParam(value = "用户id")Integer uid){
         return as.selecByUId(uid);
     }
     @ApiOperation("添加地址")
     @PostMapping("insertAddress.do")
-    public ResultVo insertAddress(Address address){
+    public ResultVo insertAddress(@ApiParam(value = "地址对象")Address address){
         return as.insertAddress(address);
     }
 

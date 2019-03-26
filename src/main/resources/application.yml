@@ -1,10 +1,10 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.95.224.159/db_greens?serverTimezone=UTC
+    url: jdbc:mysql://47.95.224.159/db_greens?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath*:mapping/*.xml
