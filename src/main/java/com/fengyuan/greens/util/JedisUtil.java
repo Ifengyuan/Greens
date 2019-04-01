@@ -1,0 +1,62 @@
+package com.fengyuan.greens.util;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+
+import java.util.Map;
+
+/**
+ * @author: fengyuan
+ * @Description: 该类的功能描述
+ * @date: 2019/3/27 19:57
+ */
+public class JedisUtil {
+    private String host;
+    private int port;
+    private String password;
+    private JedisPool jedisPool;//连接池
+    private Jedis jedis;
+    public JedisUtil(String host, int port, String password){
+        this.host = host;
+        this.port = port;
+        this.password = password;
+        jedisPool = new JedisPool(host,port);
+        jedis = jedisPool.getResource();
+        jedis.auth(password);
+    }
+    //常用操作
+    //储存
+    public String save(String key, String value){
+        return  jedis.set(key,value);
+    }
+    public long save(String key, Map<String,String> map){
+        return  jedis.hset(key,map);
+    }
+    public long save(String key,String field,String value){
+        return jedis.hset(key, field, value);
+    }
+    public long save(String key,String... list){
+        return jedis.lpush(key, list);
+    }
+    public long saveSet(String key, String[] set){
+        return  jedis.sadd(key,set);
+    }
+    public long saveZSet(String key,Map<String,Double> map){
+        return jedis.zadd(key, map);
+    }
+    //删除
+    public long del(String key){
+        return  jedis.del(key);
+    }
+    public long del(String key,String field){
+        return  jedis.hdel(key,field);
+    }
+    //校验
+    public boolean exists(String key){
+        return jedis.exists(key);
+    }
+    //设置有效期
+    public long expire(String key,int seconds){
+        return jedis.expire(key, seconds);
+    }
+}

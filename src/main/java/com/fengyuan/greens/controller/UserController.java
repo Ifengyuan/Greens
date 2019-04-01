@@ -1,13 +1,16 @@
 package com.fengyuan.greens.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fengyuan.greens.entity.User;
 import com.fengyuan.greens.service.UserService;
+import com.fengyuan.greens.util.ResultUtil;
 import com.fengyuan.greens.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,4 +35,11 @@ public class UserController {
     public ResultVo insertUser(@ApiParam(value = "传来的用户对象")User user){
         return us.insertUser(user);
     }
+   /* @ApiOperation("修改")
+    @GetMapping("updateUser.do")
+    public ResultVo updateUser(User user, Integer id){
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",id);
+        return us. ? ResultUtil.exec(true,"OK",null):ResultUtil.exec(false,"ERROR",null);
+    }*/
 }
