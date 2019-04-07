@@ -3,6 +3,7 @@ package com.fengyuan.greens.service.impl;
 import com.fengyuan.greens.dao.UserMapper;
 import com.fengyuan.greens.entity.User;
 import com.fengyuan.greens.service.UserService;
+import com.fengyuan.greens.token.TokenUtil;
 import com.fengyuan.greens.util.ResultUtil;
 import com.fengyuan.greens.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,8 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.selectByPhone(phone);
         if (user != null){
             if (user.getPassword().equals(password)){
-                return ResultUtil.exec(true,"Ok",user);
+                String token = TokenUtil.createToken(user);
+                return ResultUtil.exec(true,"Ok",token);
             }
         }
         return ResultUtil.exec(false,"用户名或密码不正确",null);

@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
     public ApiInfo createApi(){
-        return new ApiInfoBuilder().title("社交APP项目接口文档").
+        return new ApiInfoBuilder().title("点菜小程序项目接口文档").
                 description("为了更好的融入团队，并且模拟真实的企业开发环境").
                 contact(new Contact("Java1807","http://1000phone.com","121212@163.com")).build();
     }

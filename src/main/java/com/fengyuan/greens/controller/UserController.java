@@ -27,7 +27,7 @@ public class UserController {
     private UserService us;
     @ApiOperation("登录")
     @PostMapping("login.do")
-    public ResultVo login(@ApiParam(value = "传来的指定字段的手机号的值")String phone, @ApiParam(value = "传来的指定字段的密码的值")String password){
+    public ResultVo login(String phone, String password){
         return us.login(phone,password);
     }
     @ApiOperation("注册")
